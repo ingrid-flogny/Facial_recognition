@@ -35,7 +35,7 @@ scaler1 = StandardScaler().fit(G_linéaire1)
 G_linéaire_cr1 = scaler1.transform(G_linéaire1)
 
 #système d'authentification avec Eigenfaces (ACP)
-pca = PCA(n_components=58).fit(G_linéaire_cr1)
+pca = PCA(n_components=163).fit(G_linéaire_cr1)
 composantes_principales = pca.components_ #calcul des vecteurs propres de la matrice de covariance
 valeurs_propres= pca.explained_variance_ #calcul des valeurs propres
 # print("Les valeurs propres sont:")
@@ -73,6 +73,7 @@ for i in range (len(valeurs_propres_à_garder)):
     somme_valeur_propre_conservées+= valeurs_propres_à_garder[i]
 
 qualité = somme_valeur_propre_conservées/somme_valeur_propre
+print("la qualité de l'ACP est :")
 print (qualité)
 
 G_projete= pca.transform(G_linéaire_cr1)
@@ -144,6 +145,7 @@ name=pca.transform(nom_vect)
 #Test d'authentification en force brute et temps d'execution
 def authentification(nom_photo,r,G,nombre_limite):
     res = Radius_search(r, nom_photo,G)
+    print(res[1])
     if res[1]>nombre_limite:
     #for i in range (res[1]):
         #if premier_point(res[0][i])==premier_point(nom_photo):

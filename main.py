@@ -26,17 +26,17 @@ scaler2 = StandardScaler().fit(G_linéaire2)
 G_linéaire_cr2 = scaler2.transform(G_linéaire2)
 
 #ACP
-G_projete1 = ACP(G_linéaire1, 58)
+G_projete1 = ACP(G_linéaire1, 163)
 #G_projete2 = ACP(G_linéaire2, 53)
 
 #TFNP
-affichage_TFNP1 = affichage_TFNP(path_vers_images1, 5500,data_test_match1, data_test_unmatch1,G_projete1,G_linéaire_cr1, 1)
+affichage_TFNP1 = affichage_TFNP(path_vers_images1, 11500,data_test_match1, data_test_unmatch1,G_projete1,G_linéaire_cr1, 1)
 #affichage_TFNP2 = affichage_TFNP(path_vers_images2, 7450,data_test_match2, data_test_unmatch2,G_projete2,G_linéaire_cr2, 1)
 
 #Authentification
 nom_photo= "lcelli.17.jpg"
 nom_vect = [mpimg.imread(path_vers_images1+"\\"+nom_photo).ravel()]
 name=pca.transform(nom_vect)
-Authentification = authentification(name,r=5500,G=G_projete1,nombre_limite=1)
+Authentification = authentification(name,r=11500,G=G_projete1,nombre_limite=1)
 print("le résultat d'authentification est :")
 print(Authentification)
